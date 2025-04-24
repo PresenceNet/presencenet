@@ -5,15 +5,23 @@ export default function App() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!input.trim()) return;
     setLoading(true);
-    // Simulate async action
-    setTimeout(() => {
-      console.log("Submitted:", input);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input })
+      });
+      const data = await res.json();
+      console.log("Reply:", data.reply);
+    } catch (err) {
+      console.error("Error talking to Presence:", err);
+    } finally {
       setInput("");
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
