@@ -8,8 +8,8 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       external: [
-        ...builtinModules.filter(m => !/^_|^internal/.test(m)),
-        'fsevents' // optional dep, safely ignored by Vercel
+        ...builtinModules,
+        'fsevents'
       ]
     }
   }
