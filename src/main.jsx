@@ -7,12 +7,10 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: (id) => {
-        return [
-          ...builtinModules,
-          'fsevents'
-        ].some((mod) => id === mod || id.startsWith(`${mod}/`));
-      }
+      external: (id) =>
+        builtinModules.includes(id) ||
+        id.startsWith('node:') ||
+        id === 'fsevents'
     }
   }
 });
