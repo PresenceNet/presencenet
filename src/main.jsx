@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: (id) => id === 'fsevents'
+      external: ['fsevents']
     }
   }
 });
