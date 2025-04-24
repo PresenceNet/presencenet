@@ -7,11 +7,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: (id) => id.startsWith('node:') || [
-        'fs', 'path', 'os', 'crypto', 'assert', 'buffer', 'zlib', 'tls',
-        'http', 'https', 'net', 'stream', 'url', 'util', 'events', 'child_process',
-        'worker_threads', 'querystring', 'tty', 'fsevents'
-      ].includes(id)
+      external: (id) =>
+        id.startsWith('node:') || [
+          'fs', 'path', 'os', 'crypto', 'assert', 'buffer', 'zlib', 'tls',
+          'http', 'https', 'net', 'stream', 'url', 'util', 'events', 'child_process',
+          'worker_threads', 'querystring', 'tty', 'fsevents'
+        ].some(name => id === name || id.startsWith(`${name}/`))
     }
   }
 });
