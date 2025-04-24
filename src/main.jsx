@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'fsevents',
+        'fsevents',
         'node:fsevents',
         'fs',
         'node:fs',
