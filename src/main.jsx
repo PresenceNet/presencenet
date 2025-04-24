@@ -7,10 +7,50 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: (id) =>
-        builtinModules.includes(id) ||
-        id.startsWith('node:') ||
-        id === 'fsevents'
+      external: [
+        'fsevents',
+        'module',
+        'node:fs',
+        'node:fs/promises',
+        'node:path',
+        'node:url',
+        'node:util',
+        'node:perf_hooks',
+        'node:module',
+        'node:crypto',
+        'tty',
+        'path',
+        'fs',
+        'events',
+        'assert',
+        'util',
+        'net',
+        'url',
+        'http',
+        'stream',
+        'os',
+        'child_process',
+        'node:os',
+        'node:child_process',
+        'node:dns',
+        'crypto',
+        'node:buffer',
+        'node:assert',
+        'node:process',
+        'node:v8',
+        'worker_threads',
+        'node:http',
+        'node:https',
+        'https',
+        'tls',
+        'node:net',
+        'querystring',
+        'node:readline',
+        'node:zlib',
+        'zlib',
+        'buffer',
+        'node:http2'
+      ]
     }
   }
 });
